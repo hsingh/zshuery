@@ -66,7 +66,11 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%m"
   fi
 }
- 
+
+function parse_git_dirty() {
+    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
   local ref dirty
@@ -112,4 +116,4 @@ build_prompt() {
   prompt_end
 }
  
-PROMPT='%{%f%b%k%}$(build_prompt) '
+prompts '%{%f%b%k%}$(build_prompt) ' '' '%{$fg_bold[orange]%}→ %{$reset_color%}'
