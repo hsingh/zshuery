@@ -34,7 +34,7 @@ load_defaults() {
     bindkey "^[m" copy-prev-shell-word
     HISTFILE=$HOME/.zsh_history
     HISTSIZE=10000
-    SAVEHIST=10000
+    SAVEHIST=32768
     setopt hist_ignore_dups
     setopt hist_reduce_blanks
     setopt share_history
@@ -263,7 +263,12 @@ load_aliases() {
     alias pinst='sudo python setup.py install && sudo rm -r build && sudo rm -r dist && sudo rm -r *egg-info' # install a Python package
     alias beep='echo -n "\a"'
     alias lst="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+
+    if [[ -f ~/.aliases ]]; then
+        source ~/.aliases
+    fi
 }
+
 load_lol_aliases() {
     # Source: http://aur.archlinux.org/packages/lolbash/lolbash/lolbash.sh
     alias wtf='dmesg'
