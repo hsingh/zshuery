@@ -25,13 +25,17 @@ load_defaults() {
     setopt no_beep
     setopt auto_cd
     setopt multios
-    setopt cdablevarS
+    setopt cdablevars
     setopt transient_rprompt
     setopt extended_glob
+    setopt auto_param_slash
+    setopt auto_remove_slash
     autoload -U url-quote-magic
     zle -N self-insert url-quote-magic
     autoload -U zmv
     bindkey "^[m" copy-prev-shell-word
+    bindkey "^[[A" history-search-backward
+    bindkey "^[[B" history-search-forward
     HISTFILE=$HOME/.zsh_history
     HISTSIZE=10000
     SAVEHIST=32768
