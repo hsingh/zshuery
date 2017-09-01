@@ -68,7 +68,7 @@ prompt_context() {
 }
 
 function parse_git_dirty() {
-    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+    [[ $(git status 2> /dev/null | tail -n1) != *"working tree clean"* ]] && echo "*"
 }
 
 # Git: branch/detached head, dirty status

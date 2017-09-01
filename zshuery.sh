@@ -53,6 +53,7 @@ load_defaults() {
 
 # Plug and play
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found # Debian/Ubuntu (out of the box with zsh)
+[[ -e ~/.exports ]] && source ~/.exports
 [[ -e /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh # Arch Linux (install the pkgfile package)
 if [[ -n ${commands[hub]} ]]; then
     function git(){hub $@}
@@ -159,7 +160,7 @@ ex() {
 mcd() { mkdir -p "$1" && cd "$1"; }
 pj() { python -mjson.tool } # pretty-print JSON
 cj() { curl -sS $@ | pj } # curl JSON
-md5() { echo -n $1 | openssl md5 /dev/stdin }
+#md5() { echo -n $1 | openssl md5 /dev/stdin }
 sha1() { echo -n $1 | openssl sha1 /dev/stdin }
 sha256() { echo -n $1 | openssl dgst -sha256 /dev/stdin }
 sha512() { echo -n $1 | openssl dgst -sha512 /dev/stdin }
